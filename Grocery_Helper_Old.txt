@@ -1,0 +1,258 @@
+//booleans 
+let list1Pressed = false; 
+let list2Pressed = false; 
+let list3Pressed = false; 
+let addInputPressed = false; 
+let savedInfo = false; 
+let delete_btn_pressed = false; 
+let clear_btn_pressed = false; 
+let save_btn_pressed = false; 
+let edit_btn_pressed = false; 
+// arrays
+let middle_content_arr = [];
+let total=0; 
+// elements
+const list1Btn = document.querySelector(".middle__lstBtns").children[0];
+const list2Btn = document.querySelector(".middle__lstBtns").children[1];
+const list3Btn = document.querySelector(".middle__lstBtns").children[2];
+
+const middle_section = document.querySelector(".middle__sections");
+const middle_plus = document.querySelector(".middle__plus");
+const middle_content = document.querySelector(".middle__content");
+const middle_lower_content = document.querySelector(".middle__lowerContent");
+// console.log(add_Input_Btn);
+// listen to list 1 btn
+list1Btn.addEventListener("click",function(){
+    list1Pressed = true; 
+    list2Pressed = false; 
+    list3Pressed = false;
+    
+    displayAddItem();
+
+    if(list1Pressed && savedInfo){
+        console.log("display list");
+        displayPage();
+    }
+    else{
+        console.log(this.parentElement.parentElement.children[2].children[0]);
+        this.parentElement.parentElement.children[3].children[0].addEventListener("click",function(){
+            addInputPressed = true; 
+            displayInput(addInputPressed, list1Pressed);
+        });
+        // console.log("display input container")
+        // displayInput();
+    }
+});
+
+// listen to list 2 btn
+list2Btn.addEventListener("click",function(){
+    list1Pressed = false; 
+    list2Pressed = true; 
+    list3Pressed = false;
+});
+
+// listen to list 3 btn
+list3Btn.addEventListener("click",function(){
+    list1Pressed = false; 
+    list2Pressed = false; 
+    list3Pressed = true;
+});
+
+
+
+// functions
+function displayAddItem(){
+    // remove "choose list" then show add button
+    middle_section.innerHTML = `
+        <h3>Product</h3>
+        <h3>Quantity</h3>
+        <h3>Price</h3>`;
+    middle_plus.innerHTML = `<i class="fas fa-plus "></i>`;
+    console.log("GONE");
+}
+function displayInput(addInputBtn, listBtn){
+// this displays the input to user to fill in info.
+    // let middle_content_arr = [];
+    middle_lower_content.innerHTML = `
+    <div class="middle__totalBox">
+                <h2 class="middle__total">Total</h2>
+                <h1 class="middle__total">${total}</h1>
+            </div>
+            <div class="middle__clearBox">
+                <button class="middle__btnClr">Clear All</button>
+            </div>
+            <div class="middle__saveBox">
+                <button class="middle__btnSave">Save</button>
+            </div>`;
+    
+    if(addInputBtn && listBtn){
+        // const middle_content_arr = [];
+        console.log("display input");
+        middle_section.style.visibility = "visible";
+        middle_content.style.opacity = 1; 
+        // middle_content_arr = [];
+        console.log(readInputVal());
+        middle_content_arr.push(`
+        <div class="middle__list1">
+        <div class="middle__column">
+            <input class="middle__product" type="text" value = "">
+        </div>
+        <div class="middle__column">
+            <div class="middle__btnContainer">
+                <button class="middle__decrease">-</button>
+                <input class="middle__quantity" type="text" value = "">
+                <button class="middle__increase">+</button>
+            </div>
+           
+        </div>
+        <div class="middle__column">
+
+            <input class="middle__price" type="text" value ="0">
+        </div>
+        <div class="middle__column">
+                <i class="fas fa-trash"></i>           
+        </div>
+    </div>`);
+        middle_content.innerHTML = middle_content_arr.join("");
+        console.log(middle_content_arr.join());
+        // make clear all btn and save btn show when user press add
+        readInputVal();
+        middle_lower_content.children[1].addEventListener("click",deleteAllInputs);
+    }
+    // listen to clear all 
+   
+    
+   
+    // listen to press delete 
+     deleteInputLine();
+
+    // listen to save  
+    middle_lower_content.children[2].addEventListener("click",displayPage);
+    
+    
+}
+function displayPage(){
+    //save the list inputted
+
+    //display the list without input elements but with text elements.
+
+
+    save_btn_pressed = true; 
+    if (save_btn_pressed){
+        console.log("saved");
+    }
+// shows the list for user once the user has saved the list
+}
+function deleteAllInputs(){
+    clear_btn_pressed = true; 
+    console.log(clear_btn_pressed);
+    
+    if(clear_btn_pressed){
+        middle_content_arr.length = 0; 
+        console.log(middle_content_arr);
+        middle_content.innerHTML = middle_content_arr.join(""); 
+        console.log(middle_content.children);
+        // middle_content_content_arr.length = 0; 
+        total = 0; 
+        updateTotal();
+    }
+// delete inputs
+}
+function deleteInputLine(){
+    let delete_btn_pressed = true; 
+    let trash_btn = document.querySelectorAll(".fa-trash");
+    
+    Array.from(trash_btn).forEach(b=>{
+        b.addEventListener("click", function(){
+            console.log(b.parentElement.parentElement)
+            b.parentElement.parentElement.remove();
+            let trash_btn = document.querySelectorAll(".fa-trash");
+            console.log(b.parentElement.parentElement.children[2].children[0]);
+            // console.log(trash_btn);
+            // clear the array
+            middle_content_arr.length = 0; 
+            // get current inner html
+            middle_content_arr.push(middle_content.innerHTML); 
+            
+            total -= parseInt(b.parentElement.parentElement.children[2].children[0].value);
+            updateTotal();
+        });
+    });
+// delete selected input
+}
+function displayExistingInput(){
+// this should allow user to edit the existing list. 
+}
+
+function readInputVal(){
+    let price_input = document.querySelectorAll(".middle__price");
+    let quantity_input = document.querySelectorAll(".middle__quantity");
+    let product_input = document.querySelectorAll(".middle__product");
+
+    Array.from(price_input).forEach(b=>{
+        b.addEventListener("change", function(){
+            let price_input = document.querySelectorAll(".middle__price");
+            b.setAttribute("value", b.value);
+            middle_content_arr.length = 0; 
+            middle_content_arr.push(middle_content.innerHTML);
+            console.log(price_input);
+            total += parseInt(b.value);
+            updateTotal();
+            console.log(total);
+            // listent to the price 
+            // change the total inner html
+
+        })
+    });
+    Array.from(quantity_input).forEach(b=>{
+        b.addEventListener("change", function(){
+            let quantity_input = document.querySelectorAll(".middle__price");
+            b.setAttribute("value", b.value);
+            middle_content_arr.length = 0; 
+            middle_content_arr.push(middle_content.innerHTML);
+
+        })
+    });
+    Array.from(product_input).forEach(b=>{
+        b.addEventListener("change", function(){
+            let product_input = document.querySelectorAll(".middle__product");
+            b.setAttribute("value", b.value);
+            middle_content_arr.length = 0; 
+            middle_content_arr.push(middle_content.innerHTML);
+
+        })
+    });
+    // Array.from(price_input).forEach(b=>{
+    //     b.addEventListener("change", function(){
+    //         let price_input = document.querySelectorAll(".middle__price");
+    //         b.setAttribute("value", b.value);
+    //         middle_content_arr.length = 0; 
+    //         middle_content_arr.push(middle_content.innerHTML);
+    //         console.log(price_input);
+    //         total += parseInt(b.value);
+    //         updateTotal();
+    //         console.log(total);
+    //         // listent to the price 
+    //         // change the total inner html
+
+    //     })
+    // });
+}
+
+
+function updateTotal(){
+    middle_lower_content.innerHTML = `
+    <div class="middle__totalBox">
+                <h2 class="middle__total">Total</h2>
+                <h1 class="middle__total">${total}</h1>
+            </div>
+            <div class="middle__clearBox">
+                <button class="middle__btnClr">Clear All</button>
+            </div>
+            <div class="middle__saveBox">
+                <button class="middle__btnSave">Save</button>
+            </div>`;
+}
+
+
+

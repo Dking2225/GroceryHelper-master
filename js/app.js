@@ -1,142 +1,154 @@
-//booleans 
-let list1Pressed = false; 
-let list2Pressed = false; 
-let list3Pressed = false; 
-let addInputPressed = false; 
-let savedInfo = false; 
-let delete_btn_pressed = false; 
-let clear_btn_pressed = false; 
-let save_btn_pressed = false; 
-let edit_btn_pressed = false; 
-// arrays
-let middle_content_arr = [];
-
-// elements
+// ****variables*****
+let price_arr = [];
+let quantity_arr =[];
+let acc = 0; 
+// *****select items******
 const list1Btn = document.querySelector(".middle__lstBtns").children[0];
 const list2Btn = document.querySelector(".middle__lstBtns").children[1];
 const list3Btn = document.querySelector(".middle__lstBtns").children[2];
-
-const middle_section = document.querySelector(".middle__sections");
-const middle_plus = document.querySelector(".middle__plus");
 const middle_content = document.querySelector(".middle__content");
-const middle_lower_content = document.querySelector(".middle__lowerContent");
-// console.log(add_Input_Btn);
-// listen to list 1 btn
-list1Btn.addEventListener("click",function(){
-    list1Pressed = true; 
-    list2Pressed = false; 
-    list3Pressed = false;
-    
-    displayAddItem();
-    
-      
-    
-    
-    if(list1Pressed && savedInfo){
-        console.log("display list");
-        displayPage();
-    }
-    else{
-        this.parentElement.parentElement.children[3].children[0].addEventListener("click",function(){
-            addInputPressed = true; 
-            displayInput(addInputPressed, list1Pressed);
-        });
-        // console.log("display input container")
-        // displayInput();
-    }
-    console.log(list1Pressed); 
-    console.log(list2Pressed); 
-    console.log(list3Pressed); 
-});
+const middle_plus = document.querySelector(".middle__plus");
+const middle_lowerContent = document.querySelector(".middle__lowerContent");
+// *****event listeners********
+// -listen to list buttons
 
-// listen to list 2 btn
-list2Btn.addEventListener("click",function(){
-    list1Pressed = false; 
-    list2Pressed = true; 
-    list3Pressed = false;
-    console.log(list1Pressed); 
-    console.log(list2Pressed); 
-    console.log(list3Pressed);
-});
+// -listen to add button
+middle_plus.children[0].addEventListener("click", addItems);
+// -listen to delete button
 
-// listen to list 3 btn
-list3Btn.addEventListener("click",function(){
-    list1Pressed = false; 
-    list2Pressed = false; 
-    list3Pressed = true;
-    console.log(list1Pressed); 
-    console.log(list2Pressed); 
-    console.log(list3Pressed);
-});
+// -listen to save button 
+middle_lowerContent.children[3].children[0].addEventListener("click",saveItems);
+// -listen to clear button
+middle_lowerContent.children[1].children[0].addEventListener("click",clearItems);
+// -listen to edit button 
 
-// functions
-function displayAddItem(){
-    // remove "choose list" then show add button
-    middle_section.innerHTML = `
-        <h3>Product</h3>
-        <h3>Quantity</h3>
-        <h3>Price</h3>`;
-    middle_plus.innerHTML = `<i class="fas fa-plus "></i>`;
-    console.log("GONE");
+// listen to calc button
+middle_lowerContent.children[2].children[0].addEventListener("click",calcTotal);
+// ****functions*********
+
+function clearItems(){
+// remove all items displayed
+middle_content.innerHTML = ""; 
+// remove items on the list array     
 }
-function displayInput(addInputBtn, listBtn){
-// this displays the input to user to fill in info.
-    // let middle_content_arr = [];
-    middle_lower_content.innerHTML = `
-    <div class="middle__totalBox">
-                <h2 class="middle__total">Total</h2>
-                <h1 class="middle__total">100</h1>
-            </div>
-            <div class="middle__clearBox">
-                <button class="middle__btnClr">Clear All</button>
-            </div>`;
-    
-    if(addInputBtn && listBtn){
-        // const middle_content_arr = [];
-        console.log("display input");
-        middle_section.style.visibility = "visible";
+
+function saveItems(){
+// Save items on the list array
+// call the renderList function
+// show the edit button
+console.log("hqwe")
+}
+
+function deleteItems(e){
+// remove the selected item on the list array
+// remove the selected item on display
+e.currentTarget.parentElement.parentElement.remove();
+calcTotal();
+// del_price = e.currentTarget.parentElement.parentElement.children[2].children[0].value; 
+// del_quan =  e.currentTarget.parentElement.parentElement.children[1].children[0].children[1].value
+// total -= parseInt(del_quan)*parseInt(del_price);
+// middle_lowerContent.children[0].children[1].innerText = total;
+
+// console.log(del_val);
+}
+
+function addItems(){
+const middle_content_info = `
+                    <div class="middle__column">
+                        <input class="middle__product" type="text">
+                    </div>
+                    <div class="middle__column">
+                        <div class="middle__btnContainer">
+                            <button class="middle__decrease">-</button>
+                            <input class="middle__quantity" type="text" >
+                            <button class="middle__increase">+</button>
+                        </div>
+                       
+                    </div>
+                    <div class="middle__column">
+
+                        <input class="middle__price" type="text">
+                    </div>
+                    <div class="middle__column">
+                        <i class="fas fa-trash"></i>
+                    </div>`;
+const middle_content_element = document.createElement("div");
+middle_content_element.classList.add("middle__list1");
+middle_content_element.innerHTML = middle_content_info; 
+renderInput(middle_content_element);
+
+
+console.log("hello");
+
+}
+
+function editItems(){
+// call renderinputs function
+// show clear all and save button and add button to be displayed
+}
+
+function calcTotal(){
+// get the value of quantity and price then set the total
+const product_price = document.querySelectorAll(".middle__price");
+const product_quantity = document.querySelectorAll(".middle__quantity");
+price_arr = [];
+    for(i=0; i<product_price.length; i++){
+        if(isNaN(product_price[i].value)|| product_price[i].value ==""){
+            product_price[i].value = 0; 
+            price_arr.push(product_price[i].value)
+        }
+        else{
+            price_arr.push(product_price[i].value);    
+        }
         
-        middle_content.style.opacity = 1; 
-        // middle_content_arr = [];
-        middle_content_arr.push(`<div class="middle__list1">
-        <div class="middle__column">
-            <input class="middle__product" type="text">
-        </div>
-        <div class="middle__column">
-            <div class="middle__btnContainer">
-                <button class="middle__decrease">-</button>
-                <input class="middle__quantity" type="text">
-                <button class="middle__increase">+</button>
-            </div>
-           
-        </div>
-        <div class="middle__column">
-
-            <input class="middle__price" type="text">
-        </div>
-    </div>`);
-        middle_content.innerHTML = middle_content_arr.join("");
-        console.log(middle_content_arr.join());
-        // make clear all btn and save btn show when user press add
     }
-    // listen to clear all 
-    // listen to press delete 
-    // listen to save 
+quantity_arr = [];
+    for(i=0; i<product_quantity.length; i++){
+        if(isNaN(product_quantity[i].value)|| product_quantity[i].value ==""){
+            product_quantity[i].value = 0; 
+            quantity_arr.push(product_quantity[i].value)
+        }
+        else{
+            quantity_arr.push(product_quantity[i].value);    
+        }
+    }
+
+// calculate total 
+for(i=0; i<quantity_arr.length; i++){
+    acc += parseInt(quantity_arr[i])*parseInt(price_arr[i]);
 }
-function displayPage(){
-// shows the list for user once the user has saved the list
-}
-function deleteAllInputs(){
-// delete inputs
-}
-function deleteInputLine(){
-// delete selected input
-}
-function displayExistingInput(){
-// this should allow user to edit the existing list. 
-}
+console.log(acc);
+middle_lowerContent.children[0].children[1].innerHTML = acc; 
+acc =0; 
+console.log(price_arr);
+console.log(quantity_arr);
 
 
+}
+
+function renderInput(middle_info){
+    //displaying input line
+    middle_content.appendChild(middle_info);
+    const product_input = document.querySelectorAll(".middle__product");
+    const product_quantity = document.querySelectorAll(".middle__quantity");
+    const product_price = document.querySelectorAll(".middle__price");
+    const delete_btn = document.querySelectorAll(".fa-trash"); 
+    // listens to delete btn                                                                                                                                                                                                                                                                          
+    Array.from(delete_btn).forEach(b=>{
+        b.addEventListener("click",deleteItems);
+    });
+     
+
+}
+
+function renderList(){
+// hide the save btn, clear, input, plus btn, delete btn, input boxes
+
+}
+
+function setUpItems(){
+
+}
 
 
 
