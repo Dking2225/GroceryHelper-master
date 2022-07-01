@@ -174,7 +174,7 @@ middle_lowerContent.children[3].children[0].addEventListener("touchstart",saveIt
 // -listen to clear button
 middle_lowerContent.children[1].children[0].addEventListener("click",clearItems);
 // -listen to edit button 
-middle_lowerContent.children[4].addEventListener("click",editItems);
+middle_lowerContent.children[4].addEventListener("touchstart",editItems);
 
 // listen to calc button
 middle_lowerContent.children[2].children[0].addEventListener("click",calcTotal);
