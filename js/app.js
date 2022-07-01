@@ -170,7 +170,7 @@ middle_plus.children[0].addEventListener("click", addItems);
 // -listen to delete button
 
 // -listen to save button 
-middle_lowerContent.children[3].children[0].addEventListener("click",saveItems);
+middle_lowerContent.children[3].children[0].addEventListener("ontouchstart",saveItems);
 // -listen to clear button
 middle_lowerContent.children[1].children[0].addEventListener("click",clearItems);
 // -listen to edit button 
