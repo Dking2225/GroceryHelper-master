@@ -8,6 +8,7 @@
     <link rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
     />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="scss/style.css">
 </head>
 <body>
@@ -15,43 +16,37 @@
     </header>
 
     <section class="middle">
-        <div class="middle__title">
+        <div class="frame1 ">
+            <div class="frame__title">
+                <h4>Grocery Helper</h4>
+            </div>
+            <div> 
+                <h2 class="style-chooseList"> Choose Your list</h2>
+            </div>
+            <div class="list-container">
+                <button class="frameBtn1 style-listBtn">List 1</button>
+                <button class="frameBtn2 style-listBtn">List 2</button>
+                <button class="frameBtn3 style-listBtn">List 3</button>
+            </div>
+        </div>
+        <div class="middle__title hide-element ">
             <h4>Grocery Helper</h4>
         </div>
 
-        <div class="middle__container">
+        <div class="middle__container hide-element">
             <div class="middle__lstBtns">
-                <button class="middle__lstBtn1">List 1</button>
-                <button class="middle__lstBtn2">List 2</button>
-                <button class="middle__lstBtn3">List 3</button>
+                <button class="middle__homeBtn style-button1">Home</button>
+                <!-- Change the list number on button depending on what is pressed -->
+                <button class="middle__listBtn style-button1">List 2</button>
+                <!-- <button class="middle__lstBtn3 style-button1">List 3</button> -->
             </div>
             <div class="middle__sections"> 
-                <!-- <h3>Product</h3>
-                <h3>Quantity</h3>
-                <h3>Price</h3> -->
-                <h2> Choose Your list</h2>
+                <h3 class ="style-underline">Product</h3>
+                <h3 class ="style-underline">Quantity</h3>
+                <h3 class ="style-underline">Price</h3>
+                <!-- <h2 class="style-chooseList"> Choose Your list</h2> -->
             </div>
             <div class="middle__content">
-                <!-- <div class="middle__list1">
-                    <div class="middle__column">
-                        <input class="middle__product" type="text">
-                    </div>
-                    <div class="middle__column">
-                        <div class="middle__btnContainer">
-                            <button class="middle__decrease">-</button>
-                            <input class="middle__quantity" type="text" >
-                            <button class="middle__increase">+</button>
-                        </div>
-                       
-                    </div>
-                    <div class="middle__column">
-
-                        <input class="middle__price" type="text">
-                    </div>
-                    <div class="middle__column">
-                        <i class="fas fa-trash"></i>
-                    </div>
-                </div> -->
             </div>
             <div class="middle__plus">
                 <i class="fas fa-plus "></i>
@@ -59,22 +54,22 @@
             
         </div>
         
-        <div class="middle__lowerContent">
+        <div class="middle__lowerContent hide-element ">
             <div class="middle__totalBox">
-                <h2 class="middle__total">Total</h2>
-                <h1 class="middle__total">0</h1>
+                <h2 class="middle__total style-underline">Total</h2>
+                <h1 class="middle__total style-noUnderline">0</h1>
             </div>
-            <div class="middle__clearBox">
-                <button class="middle__btnClr">Clear All</button>
+            <div class="middle__clearBox ">
+                <button class="middle__btnClr style-button2">Clear All</button>
             </div>
-            <div class="middle__calcBox">
-                <button class="middle__btnCalc">Calculate</button>
+            <div class="middle__calcBox ">
+                <button class="middle__btnSave style-button2">Calculate</button>
             </div>
-            <div class="middle__saveBox">
-                <button class="middle__btnSave">Save</button>
+            <div class="middle__saveBox ">
+                <button class="middle__btnSave style-button2">Save</button>
             </div>
-            <div class="middle__editBox">
-                <button class="middle__btnEdit">Edit</button>
+            <div class="middle__editBox hide-element ">
+                <button class="middle__btnSave style-button2">Edit</button>
             </div>
         </div>
         

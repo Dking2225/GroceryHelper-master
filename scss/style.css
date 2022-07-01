@@ -1,24 +1,157 @@
 body {
   background: gray;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 100vh;
+  margin: 0px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.style-button1 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 400;
+  color: #0D0D0D;
+  background-color: #D9D9D9;
+  width: 85px;
+  height: 35px;
+  border: 2px solid #000000;
+  padding: 0px;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.style-button2 {
+  width: 317px;
+  height: 30px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0D0D0D;
+  background: #E9E8E8;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #7B7A7A;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 0px;
+}
+
+.style-chooseList {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 28px;
+  font-weight: 200;
+  color: #0D0D0D;
+  -webkit-text-stroke: 1px #0D0D0D;
+  margin: 0px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.style-underline {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 300;
+  color: #0D0D0D;
+  text-decoration: underline;
+  margin: 0px;
+}
+
+.style-noUnderline {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  font-weight: 300;
+  color: #0D0D0D;
+  text-decoration: none;
+}
+
+.style-input {
+  width: 80px;
+  height: 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #7B7A7A;
+  background: #E9E8E8;
+}
+
+.frame__title h4 {
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-size: 32px;
+  color: #0D0D0D;
+  -webkit-text-stroke: 1px #0D0D0D;
+  margin: 0px;
+  padding-top: 20px;
+}
+
+.hide-element {
+  display: none !important;
+}
+
+.fa-trash {
+  padding-top: 4px;
+  color: #7B7A7A;
+}
+
+.fa-plus {
+  color: #0D0D0D;
+  font-size: 22px;
 }
 
 input {
   text-align: center;
-  font-size: 9px;
+}
+
+.renderBox {
+  width: 80px;
+  height: 25px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 1px solid #7B7A7A;
+  background: #E9E8E8;
+  text-align: center;
+  padding-top: 2px;
+}
+
+.list-container {
+  height: 185px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 75px;
+}
+
+.style-listBtn {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  font-weight: 400;
+  color: #0D0D0D;
+  background-color: #D9D9D9;
+  width: 211px;
+  height: 35px;
+  border: 2px solid #000000;
+  padding: 0px;
+  -webkit-filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .middle {
-  background: white;
-  margin: 66px;
-  padding: 6px;
-  padding-bottom: 6px;
-  padding-bottom: 23%;
-  border-width: 15px;
-  border-style: solid;
-  border-color: #7e8177a3;
+  background: #F5F5F5;
+  border: 20px solid #D9D9D9;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: 100%;
 }
 
 .middle__list1 {
@@ -29,6 +162,7 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  padding-bottom: 20px;
 }
 
 .middle__list1 h3 {
@@ -53,7 +187,13 @@ input {
 
 .middle__title h4 {
   text-align: center;
-  font-size: 6vmin;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-size: 32px;
+  color: #0D0D0D;
+  -webkit-text-stroke: 1px #0D0D0D;
+  margin: 0px;
+  padding-top: 20px;
 }
 
 .middle__container {
@@ -76,12 +216,6 @@ input {
           flex-direction: row;
 }
 
-.middle__price, .middle__quantity, .middle__product {
-  width: 8vmin;
-  height: 3vmin;
-  margin-bottom: 20px;
-}
-
 .middle__lstBtns {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -91,23 +225,21 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-top: 30px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .middle__sections {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.middle__sections h3 {
-  padding: 5px;
-  text-decoration: underline;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding-top: 35px;
+  padding-bottom: 20px;
 }
 
 .middle__content {
@@ -124,7 +256,6 @@ input {
 }
 
 .middle__lstBtn1, .middle__lstBtn2, .middle__lstBtn3 {
-  border: 2px solid #000;
   font-size: 2.5vh;
 }
 
@@ -138,15 +269,18 @@ input {
 }
 
 .middle__totalBox {
-  margin-top: 18px;
-  height: 25px;
-  margin-bottom: 5px;
+  margin-top: 25px;
+  width: 317px;
+  height: 30px;
+  margin-bottom: 22px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border: 2px solid #7B7A7A;
   background: #E9E8E8;
 }
@@ -165,35 +299,15 @@ input {
   margin-right: 2%;
 }
 
-.middle__btnClr {
-  border: 2px solid #7B7A7A;
-  width: 100%;
-  height: 25px;
-  background: #E9E8E8;
-  font-size: medium;
+.middle__calcBox, .middle__clearBox, .middle__saveBox {
+  padding-bottom: 15px;
 }
 
-.middle__btnSave {
-  border: 2px solid #7B7A7A;
-  width: 100%;
-  height: 25px;
-  background: #E9E8E8;
-  font-size: medium;
-}
-
-.middle__increase {
-  border: none;
-  background: none;
-  position: static;
-  font-size: 4vmin;
-  margin-top: -22px;
-}
-
-.middle__decrease {
-  border: none;
-  background: none;
-  position: static;
-  font-size: 4vmin;
-  margin-top: -22px;
+.middle__lowerContent {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  bottom: 30px;
 }
 /*# sourceMappingURL=style.css.map */
