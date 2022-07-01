@@ -180,15 +180,16 @@ middle_lowerContent.children[4].addEventListener("click",editItems);
 middle_lowerContent.children[2].children[0].addEventListener("click",calcTotal);
 // ****functions*********
 
+let items = JSON.parse(localStorage.getItem('list'))
 
-// window.onload = function(){
-//     if(lists == null){
-//       lists = lists  
-//     }
-//     lists = JSON.parse(localStorage.getItem('list'))
-//     console.log(lists)
-//     console.log("running onload")
-// }
+window.onload = function(){
+    if(items != null){
+        lists = items
+        console.log(lists)
+        console.log("running onload")
+    }
+    
+}
 
 
 function clearItems(){
