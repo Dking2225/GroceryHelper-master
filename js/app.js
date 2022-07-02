@@ -170,11 +170,11 @@ middle_plus.children[0].addEventListener("click", addItems);
 // -listen to delete button
 
 // -listen to save button 
-middle_lowerContent.children[3].children[0].addEventListener("touchstart",saveItems);
+middle_lowerContent.children[3].children[0].addEventListener("click",saveItems);
 // -listen to clear button
 middle_lowerContent.children[1].children[0].addEventListener("click",clearItems);
 // -listen to edit button 
-middle_lowerContent.children[4].addEventListener("touchstart",editItems);
+middle_lowerContent.children[4].addEventListener("click",editItems);
 
 // listen to calc button
 middle_lowerContent.children[2].children[0].addEventListener("click",calcTotal);
@@ -282,22 +282,22 @@ function deleteItems(e){
 // remove the selected item on the list array
 // remove the selected item on display
 e.currentTarget.parentElement.parentElement.remove();
-const rect = middle_content.getBoundingClientRect();
+// const rect = middle_content.getBoundingClientRect();
 
-console.log(rect);
-if(rect.height>=110){
-    // console.log("bigger than 110")
-    let height = -50*(counter-2)
-    let rect_lower_content = middle_lowerContent.getBoundingClientRect();
-    middle_lowerContent.style.bottom = `${height +30}px`
+// console.log(rect);
+// if(rect.height>=110){
+//     // console.log("bigger than 110")
+//     let height = -50*(counter-2)
+//     let rect_lower_content = middle_lowerContent.getBoundingClientRect();
+//     middle_lowerContent.style.bottom = `${height +30}px`
     
-    let rec_middle = middle.getBoundingClientRect();
-    console.log(rec_middle.height)
-    console.log(rect_lower_content.bottom)
-    middle.style.height = `${rec_middle.height - 50}px`
-    // console.log(height_middle)
-    counter--
-}
+//     let rec_middle = middle.getBoundingClientRect();
+//     console.log(rec_middle.height)
+//     console.log(rect_lower_content.bottom)
+//     middle.style.height = `${rec_middle.height - 50}px`
+//     // console.log(height_middle)
+//     counter--
+// }
 calcTotal();
 // del_price = e.currentTarget.parentElement.parentElement.children[2].children[0].value; 
 // del_quan =  e.currentTarget.parentElement.parentElement.children[1].children[0].children[1].value
@@ -328,25 +328,25 @@ const middle_content_info = `
 const middle_content_element = document.createElement("div");
 middle_content_element.classList.add("middle__list1");
 middle_content_element.innerHTML = middle_content_info; 
-const rect = middle_content.getBoundingClientRect();
+// const rect = middle_content.getBoundingClientRect();
 
 
-console.log(rect);
+// console.log(rect);
 renderInput(middle_content_element);
-if(rect.height>=110){
-    console.log("bigger than 110")
-    let height = -50*counter
-    let rect_lower_content = middle_lowerContent.getBoundingClientRect();
-    middle_lowerContent.style.bottom = `${height +30}px`
+// if(rect.height>=110){
+//     console.log("bigger than 110")
+//     let height = -50*counter
+//     let rect_lower_content = middle_lowerContent.getBoundingClientRect();
+//     middle_lowerContent.style.bottom = `${height +30}px`
     
-    let rec_middle = middle.getBoundingClientRect();
-    console.log(rec_middle.height)
-    console.log(rect_lower_content.bottom)
-    middle.style.height = `${rec_middle.height + 50}px`
-    // console.log(height_middle)
-    console.log(counter)
-    counter++
-}
+//     let rec_middle = middle.getBoundingClientRect();
+//     console.log(rec_middle.height)
+//     console.log(rect_lower_content.bottom)
+//     middle.style.height = `${rec_middle.height + 50}px`
+//     // console.log(height_middle)
+//     console.log(counter)
+//     counter++
+// }
 
 
 }
@@ -402,7 +402,7 @@ middle_lowerContent.children[4].classList.add("hide-element");
 middle_lowerContent.children[3].classList.remove("hide-element");//save
 middle_lowerContent.children[2].classList.remove("hide-element");//calc
 middle_lowerContent.children[1].classList.remove("hide-element");//clear
-middle_lowerContent.style.bottom = `${-(middle_content.getBoundingClientRect().height -200)}px`
+// middle_lowerContent.style.bottom = `${(middle_content.getBoundingClientRect().y -200)}px`
 }
 
 function calcTotal(){
@@ -494,9 +494,9 @@ for(let i =0; i<(lists[list].product[0].length); i++){
         </div>
     </div>`) ;
 }
-middle_lowerContent.style.bottom = `${middle_content.getBoundingClientRect().y-30}px`
+// middle_lowerContent.style.bottom = `${middle_content.getBoundingClientRect().y-30}px`
 // middle_lowerContent.style.bottom = `${middle_y}px`
-console.log(middle_lowerContent.style.bottom)
+// console.log(middle_lowerContent.style.bottom)
 middle_content.innerHTML = content_render_arr.join(""); 
 middle_lowerContent.children[0].children[1].innerText = lists[list].total
 middle_plus.children[0].classList.add("hide-element");
