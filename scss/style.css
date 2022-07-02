@@ -309,4 +309,8 @@ input {
 .middle__lowerContent {
   text-align: center;
 }
+
+.middle .frame1 {
+  height: 94vh;
+}
 /*# sourceMappingURL=style.css.map */
